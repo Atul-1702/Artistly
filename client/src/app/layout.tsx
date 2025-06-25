@@ -1,15 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.scss";
+import CustomFont from "next/font/local";
+import Header from "@/components/Header/Header";
+import ReduxProvider from "@/redux/reduxProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const SFProText = CustomFont({
+  src: [
+    {
+      path: "../font/SF-Pro-Text-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../font/SF-Pro-Text-Semibold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../font/SF-Pro-Text-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-sfpro",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,9 +37,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="en" className={SFProText.variable}>
+      <body>
+        <Header></Header>
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );

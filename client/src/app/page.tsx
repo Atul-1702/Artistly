@@ -1,95 +1,104 @@
+import Link from "next/link";
+import style from "./page.module.scss";
 import Image from "next/image";
-import styles from "./page.module.scss";
+import { getCategoryData } from "@/apiCalls/api";
+import CategoryModel from "@/models/category-model";
 
-export default function Home() {
+export const revalidate = 7 * 24 * 60 * 60;
+
+export default async function Home() {
+  const response = await getCategoryData();
+  const cardData: CategoryModel[] = response.data;
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <main className={style["home-page-main-section-wrapper"]}>
+      <section className={style["video-section-area"]}>
+        <video
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="auto"
+          id="backgroundVideo"
+          style={{ width: "100%", objectFit: "cover", height: "99.3vh" }}
+        >
+          <source
+            src="/videos/live101-homepage-banner-video.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className={style["video-content"]}>
+          <h2>Book Your Live Artist</h2>
+          <h3>Anywhere. Anytime. Any Budget.</h3>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className={style["artist-categories-wrapper"]}>
+        <h2>Artist Categories</h2>
+        <p>
+          Bring your events to the next level with the best artists—book top
+          musicians, live singers, DJs, stand up comedians, motivational
+          speakers, emcees and more. Seamless booking for an unforgettable event
+          with Artistly.
+        </p>
+        <hr />
+        <div className={style["artists-category-card-wrapper"]}>
+          {cardData.map((card: CategoryModel, index) => (
+            <article key={index} className={style["artists-category-card"]}>
+              <figure>
+                <Image
+                  alt="instant-quotation-card-how-it-works-page-image"
+                  src={card.image}
+                  width={564}
+                  height={100}
+                />
+              </figure>
+
+              <section className={style["artist-card-text-content-container"]}>
+                <h2>{card.title}</h2>
+                <p>{card.description}</p>
+                <ul>
+                  <li>
+                    <Image
+                      alt="tick-icon"
+                      src="/images/tick-circle.svg"
+                      width={24}
+                      height={24}
+                    />
+                    <span>{card.bullets[0]}</span>
+                  </li>
+                  <li>
+                    <Image
+                      alt="tick-icon"
+                      src="/images/tick-circle.svg"
+                      width={24}
+                      height={24}
+                    />
+                    <span>{card.bullets[1]}</span>
+                  </li>
+                  <li>
+                    <Image
+                      alt="tick-icon"
+                      src="/images/tick-circle.svg"
+                      width={24}
+                      height={24}
+                    />
+                    <span>{card.bullets[2]}</span>
+                  </li>
+                  <Link href={card.ctaLink}>
+                    <span>{card.ctaText}</span>
+                    <Image
+                      src="/images/right-arrow-icon.svg"
+                      alt="right-arrow-icon"
+                      width={24}
+                      height={24}
+                    />
+                  </Link>
+                </ul>
+              </section>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

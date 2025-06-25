@@ -1,6 +1,5 @@
-import { NextApiRequest } from "next";
 import CategoryModel from "../../../models/category-model";
-export async function GET(request: NextApiRequest) {
+export async function GET() {
   const cardData: CategoryModel[] = [
     {
       title: "Book Talented Singers Instantly",

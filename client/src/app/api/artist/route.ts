@@ -1,6 +1,6 @@
 import ArtistModel from "@/models/artist-model";
 
-export function GET(req) {
+export function GET() {
   const artistData: ArtistModel[] = [
     {
       Image:

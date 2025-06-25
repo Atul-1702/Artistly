@@ -1,13 +1,23 @@
-import type { NextConfig } from "next";
+// next.config.js
+const nextConfig = {
+  // Minimal required config
+  reactStrictMode: true,
 
-const nextConfig: NextConfig = {
-  /* config options here */
+  // Your existing options
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
+  api: {
+    externalResolver: true,
+  },
+  // Add this to ensure proper export handling
+  experimental: {
+    esmExternals: "loose",
+  },
 };
 
-export default nextConfig;
+// Use this specific export style
+module.exports = nextConfig;

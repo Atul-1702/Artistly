@@ -4,8 +4,6 @@ import Image from "next/image";
 import { getCategoryData } from "@/apiCalls/api";
 import CategoryModel from "@/models/category-model";
 
-export const revalidate = 7 * 24 * 60 * 60;
-
 export default async function Home() {
   const response = await getCategoryData();
   const cardData: CategoryModel[] = response.data;

@@ -31,7 +31,7 @@ const ArtistForm = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: unknown) => {
     console.log("Submitted Data:", data);
   };
 
@@ -95,12 +95,6 @@ const ArtistForm = () => {
           ))}
         </select>
         {errors.feeRange && <p className="error">{errors.feeRange.message}</p>}
-      </div>
-
-      {/* Profile Image */}
-      <div className="form-group">
-        <label>Profile Image (optional)</label>
-        <input type="file" {...register("profileImage")} />
       </div>
 
       {/* Location */}

@@ -1,0 +1,252 @@
+@use "../SCSS/font-mixins" as fontMixin;
+@use "../SCSS/variables" as variable;
+@use "../SCSS/breakpoint-mixins" as breakpoint;
+@use "../SCSS/card-animation-mixin" as cardAnimation;
+
+.home-page-main-section-wrapper {
+  .video-section-area {
+    .video-content {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-40%);
+      width: 100%;
+      h2 {
+        text-align: center;
+        @include fontMixin.fontStyleBold(
+          $fontSize: 64px,
+          $fontColor: variable.$light-white
+        );
+        margin-bottom: 0px;
+        @media (max-width: variable.$tabletBreakpoint) {
+          font-size: 48px;
+        }
+        @media (max-width: variable.$mobileBreakpoint) {
+          font-size: 32px;
+        }
+      }
+      h3 {
+        margin-top: 16px;
+        @include fontMixin.fontStyleSemiBold(
+          $fontSize: 36px,
+          $fontColor: variable.$light-white
+        );
+        @media (max-width: variable.$tabletBreakpoint) {
+          font-size: 28px;
+        }
+        @media (max-width: variable.$mobileBreakpoint) {
+          font-size: 22px;
+        }
+        text-align: center;
+      }
+    }
+  }
+  .artist-categories-wrapper {
+    @include breakpoint.desktopFixedWidth;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    @media (max-width: variable.$tabletBreakpoint) {
+      @include breakpoint.tabletFixedWidth;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: variable.$mobileBreakpoint) {
+      @include breakpoint.mobileFixedWidth;
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+    h2 {
+      @include fontMixin.fontStyleSemiBold(
+        $fontSize: 48px,
+        $fontColor: variable.$primary-primary
+      );
+      margin-bottom: 16px;
+      margin-top: 0;
+      @media (max-width: variable.$tabletBreakpoint) {
+      }
+      @media (max-width: variable.$mobileBreakpoint) {
+        font-size: 36px;
+      }
+    }
+    p {
+      @include fontMixin.fontStyleRegular(
+        $fontSize: 19px,
+        $fontColor: variable.$dark-dark-d-2
+      );
+      @media (max-width: variable.$tabletBreakpoint) {
+        font-size: 16px;
+      }
+      margin-top: 0;
+    }
+    hr {
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(
+        90deg,
+        #f51102 0%,
+        #a4675a 32.81%,
+        #9766ff 66%,
+        #ff5bb4 95.5%
+      );
+      margin-top: 32px;
+      margin-bottom: 46px;
+      opacity: 1 !important;
+      border-top: none;
+    }
+
+    .artists-category-card-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      @include breakpoint.desktopFixedWidth;
+      @media (max-width: variable.$tabletBreakpoint) {
+        @include breakpoint.tabletFixedWidth;
+        align-items: center;
+      }
+      @media (max-width: variable.$mobileBreakpoint) {
+        @include breakpoint.mobileFixedWidth;
+      }
+      .artists-category-card:hover {
+        figure {
+          img {
+            @include cardAnimation.cardHoverInAnimation;
+          }
+        }
+      }
+      .artists-category-card {
+        display: flex;
+        gap: 24px;
+        width: 1184px;
+        min-width: 1184px;
+        max-width: 1184px;
+        padding: 16px;
+        border-radius: 12px;
+        background: variable.$light-white;
+        box-shadow: 0px 8px 16px 0px rgba(39, 40, 51, 0.16);
+        @media (max-width: variable.$tabletBreakpoint) {
+          flex-direction: column-reverse;
+          width: 584px;
+          min-width: 584px;
+          max-width: 584px;
+        }
+        @media (max-width: variable.$mobileBreakpoint) {
+          width: 312px;
+          min-width: 312px;
+          max-width: 312px;
+        }
+        figure {
+          margin: 0;
+          overflow: hidden;
+          border-radius: 4px;
+          img {
+            width: 564px;
+            height: 100%;
+            transform-origin: center;
+            border-radius: 4px;
+            @include cardAnimation.cardHoverOutAnimation;
+            @media (max-width: variable.$tabletBreakpoint) {
+              width: 100%;
+            }
+          }
+        }
+        .artist-card-text-content-container {
+          display: flex;
+          flex-direction: column;
+          width: 564px;
+          @media (max-width: variable.$tabletBreakpoint) {
+            width: 100%;
+          }
+          h2 {
+            @include fontMixin.fontStyleBold(
+              $fontSize: 32px,
+              $fontColor: variable.$helby-webflow-ecommerce-webflow-io-black
+            );
+            margin-top: 17.5px;
+            margin-bottom: 0px;
+            @media (max-width: variable.$tabletBreakpoint) {
+              margin-top: 0;
+              font-size: 24px;
+            }
+          }
+          p {
+            margin-top: 24px;
+            margin-bottom: 12px;
+            @include fontMixin.fontStyleRegular(
+              $fontColor: variable.$dark-dark-l-2,
+              $fontSize: 14px
+            );
+          }
+          ul {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            li {
+              display: flex;
+              gap: 12px;
+              align-items: center;
+              span {
+                @include fontMixin.fontStyleSemiBold(
+                  $fontColor: variable.$secondary-700,
+                  $fontSize: 12px
+                );
+              }
+              img {
+                height: 24px;
+                width: 24px;
+              }
+            }
+          }
+          a {
+            margin-top: auto;
+            text-decoration: none;
+            display: flex;
+            gap: 4px;
+            width: max-content;
+            align-items: center;
+            margin-left: 8px;
+            position: relative;
+            &::after {
+              content: "";
+              width: 0px;
+              height: 2px;
+              background-color: variable.$primary-primary;
+              position: absolute;
+              bottom: 0;
+
+              animation: linkAnimationOut 0.7s forwards;
+              @keyframes linkAnimationOut {
+                0% {
+                  width: 100%;
+                }
+                100% {
+                  width: 0%;
+                }
+              }
+            }
+            &:hover {
+              &::after {
+                animation: linkAnimationIn 0.7s forwards;
+                @keyframes linkAnimationIn {
+                  0% {
+                    width: 0;
+                  }
+                  100% {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+            span {
+              @include fontMixin.fontStyleSemiBold(
+                $fontSize: 16px,
+                $fontColor: variable.$primary-primary
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}

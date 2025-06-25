@@ -1,0 +1,115 @@
+@use "../../../SCSS/variables" as variable;
+@use "../../../SCSS/font-mixins" as fontMixin;
+@use "../../../SCSS/button-mixins" as buttonMixin;
+.search-component-section-wrapper {
+  margin-top: 120px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: variable.$mobileBreakpoint) {
+    flex-direction: column;
+    gap: 12px;
+  }
+  #search-container {
+    position: relative;
+    input {
+      width: 384px;
+      height: 52px;
+      padding: 14px 16px;
+      border-radius: 1000px;
+      border: 1px solid variable.$light-light-d-2;
+      box-sizing: border-box;
+
+      @media (max-width: variable.$tabletBreakpoint) {
+        width: 312px;
+      }
+      input:placeholder {
+        @include fontMixin.fontStyleSemiBold(
+          $fontColor: variable.$secondary-secondary,
+          $fontSize: 16px
+        );
+      }
+    }
+    img {
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      right: 17px;
+      top: 15px;
+      cursor: pointer;
+    }
+
+    ul.suggestion-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      width: 98%;
+      z-index: 10;
+
+      li {
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          background-color: #f2f2f2;
+        }
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+  #button-container {
+    display: flex;
+    gap: 16px;
+    @media (max-width: variable.$mobileBreakpoint) {
+      gap: 8px;
+      button:first-child {
+        width: 189px;
+        padding: 16px 16px;
+      }
+    }
+    button:first-child {
+      @include buttonMixin.redButtonMixin;
+      height: 52px;
+      width: 105px;
+      padding: 14px 16px;
+      box-sizing: border-box;
+      img {
+        width: 24px;
+        height: 24px;
+      }
+      @media (max-width: variable.$mobileBreakpoint) {
+        width: 189px;
+        padding: 16px 16px;
+      }
+    }
+    button:last-child {
+      display: flex;
+      padding: 2px 2px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      border-radius: 1000px;
+      height: 54px;
+      img {
+        height: 52px;
+        width: 52px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+    }
+  }
+}

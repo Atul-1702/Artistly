@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "artistly-git-main-atul-kumars-projects-dc1fbddd.vercel.app",
   headers: { "Content-Type": "application/json" },
 });
 

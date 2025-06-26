@@ -5,7 +5,7 @@ import FilterComponent from "./filtercomponent/FilterComponent";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import ArtistModel from "@/models/artist-model";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";

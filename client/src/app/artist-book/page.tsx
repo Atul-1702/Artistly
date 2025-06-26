@@ -57,7 +57,7 @@ const ArtistForm = () => {
       <div className="form-group">
         <label>Category</label>
         <div className="multi-checkbox">
-          {categoryOptions.map((cat) => (
+          {categoryOptions?.map((cat) => (
             <label key={cat}>
               <input type="checkbox" value={cat} {...register("category")} />
               {cat}
@@ -71,7 +71,7 @@ const ArtistForm = () => {
       <div className="form-group">
         <label>Languages Spoken</label>
         <div className="multi-checkbox">
-          {languageOptions.map((lang) => (
+          {languageOptions?.map((lang) => (
             <label key={lang}>
               <input type="checkbox" value={lang} {...register("languages")} />
               {lang}
@@ -88,7 +88,7 @@ const ArtistForm = () => {
         <label>Fee Range</label>
         <select {...register("feeRange")}>
           <option value="">Select a range</option>
-          {feeRanges.map((fee) => (
+          {feeRanges?.map((fee) => (
             <option key={fee} value={fee}>
               {fee}
             </option>

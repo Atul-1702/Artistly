@@ -40,7 +40,7 @@ export default async function Home() {
         </p>
         <hr />
         <div className={style["artists-category-card-wrapper"]}>
-          {cardData.map((card: CategoryModel, index) => (
+          {cardData?.map((card: CategoryModel, index) => (
             <article key={index} className={style["artists-category-card"]}>
               <figure>
                 <Image

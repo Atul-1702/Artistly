@@ -64,7 +64,7 @@ function SearchComponent({ setSearchedValue, modifiedArtist }) {
         />
         {suggestionList.length !== 0 ? (
           <ul className="suggestion-list">
-            {suggestionList.map((suggestion: ArtistModel, index: number) => (
+            {suggestionList?.map((suggestion: ArtistModel, index: number) => (
               <li onClick={() => handleNaviagtion(suggestion.Name)} key={index}>
                 {suggestion.Name}
               </li>

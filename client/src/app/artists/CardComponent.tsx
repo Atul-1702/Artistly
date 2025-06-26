@@ -171,7 +171,7 @@ function CardComponent({ artist }) {
       <div className={style["artist-card-wrapper"]}>
         {modifiedArtist
           .slice(startIndex * 12, startIndex * 12 + 12)
-          .map((artistInfo: ArtistModel, index: number) => (
+          ?.map((artistInfo: ArtistModel, index: number) => (
             <React.Fragment key={index}>
               {isGridView === true ? (
                 <div className={style["artist-card-grid-view"]}>
@@ -246,7 +246,7 @@ function CardComponent({ artist }) {
           onClick={onPreviousButtonClicked}
         />
         <nav className={style["all-pages-button"]}>
-          {Array.from({ length: Math.ceil(modifiedArtist.length / 12) }).map(
+          {Array.from({ length: Math.ceil(modifiedArtist.length / 12) })?.map(
             (item, index) => (
               <button
                 key={index}

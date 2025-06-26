@@ -83,13 +83,13 @@ function FilterComponent({
       </div>
       <hr role="separator" />
 
-      {filterOptions.map((filterData, index) => (
+      {filterOptions?.map((filterData, index) => (
         <fieldset key={index} id="technology" className="common-filter">
           <button className="selected-button">
             <span>{Object.keys(filterData)[0]}</span>
           </button>
           <div role="menu" className="menu">
-            {filterData[Object.keys(filterData)[0]].map((list, index) => (
+            {filterData[Object.keys(filterData)[0]]?.map((list, index) => (
               <div key={index} className="menuitemcheckbox">
                 <input
                   type="radio"

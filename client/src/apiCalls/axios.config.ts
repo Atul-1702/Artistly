@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "artistly-9f10mpnjn-atul-kumars-projects-dc1fbddd.vercel.app",
+  baseURL: "https://artistly-wheat.vercel.app",
   headers: { "Content-Type": "application/json" },
 });
 
